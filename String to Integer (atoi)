@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int myAtoi(string s) {
+        long long int n=0,j,k,si=1;;
+        int i=0;
+        while(s[i]==' ')
+            i++;
+        if(s[i]=='-')
+            si=-1,i++;
+        else if(s[i]=='+')
+            i++;
+        while(n==0 && s[i]=='0')
+            i++;
+        while(s[i]-48>=0 && s[i]-48 <=9)
+        {
+            n=n*10LL+(int)s[i]-48;
+            if(n>INT_MAX)
+                break;
+            i++;
+        }
+        n*=si;
+        if(n==(int)n)
+            return n;
+        else if(n>0)
+            return INT_MAX;
+        else 
+            return INT_MIN;
+            
+    }
+};
