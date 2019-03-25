@@ -1,0 +1,19 @@
+class Solution {
+public:
+    int removeDuplicates(vector<int>& a) {
+        int i,j=1,k;
+        if(a.size()==0)
+            return 0;
+        k=a[0];
+        for(i=1;i<a.size();i++)
+        {
+            if(a[i]==k);
+            else
+            {
+                a[j++]=a[i];
+                k=a[i];
+            }
+        }
+        return j;
+    }
+};
