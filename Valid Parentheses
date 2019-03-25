@@ -1,0 +1,37 @@
+class Solution {
+public:
+    bool isValid(string s) {
+        int a,b,c,i,j=0;
+        a=b=c=0;
+        stack<char> stk;
+        for(i=0;i<s.length();i++)
+        {
+            if(s[i]=='(')
+                stk.push('(');
+            else if(s[i]=='[')
+                stk.push('[');
+            else if(s[i]=='{')
+                stk.push('{');
+            else if(s[i]==')' && stk.size()>0 && stk.top()=='(')
+                stk.pop();
+            else if(s[i]==']' && stk.size()>0 && stk.top()=='[')
+                stk.pop();
+            else if(s[i]=='}' && stk.size()>0 && stk.top()=='{')
+                stk.pop();
+            else
+            {
+                j=1;
+                break;
+            }
+            //cout<<stk.top()<<endl;
+        }
+        //cout<<j<<endl;
+        if(j==1)
+            return false;
+        else if(stk.size()==0)
+            return true;
+        else
+            return false;
+            
+    }
+};
