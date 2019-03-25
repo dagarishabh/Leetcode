@@ -1,0 +1,20 @@
+class Solution {
+public:
+    int reverse(int x) {
+        long long int y=0,s=1,x1=x*1LL;
+        if(x<0)
+        {
+            s=-1;
+            x1*=(-1);
+        }
+        while(x1>0)
+        {
+            y=y*10LL+x1%10;
+            x1/=10;
+        }
+        y*=s;
+        if(y==(int)y)
+        return (int)y;
+        else return 0;
+    }
+};
