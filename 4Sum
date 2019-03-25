@@ -1,0 +1,54 @@
+class Solution {
+public:
+    vector<vector<int>> fourSum(vector<int>& nums, int target) {
+        int i,j,k,l;
+        vector<vector<int> > ans;
+        vector<int> temp;
+        sort(nums.begin(),nums.end());
+        if(nums.size()<=3)
+            return ans;
+       // for(i=0;i<nums.size();i++)
+         //   cout<<nums[i]<<" ";
+        //cout<<endl;
+        for(i=0;i<nums.size()-3;)
+        {
+            for(j=i+1;j<nums.size()-2;)
+            {
+                for(k=j+1,l=nums.size()-1;k<l;)
+                {
+                    //cout<<nums[i]<<" "<<nums[j]<<" "<<nums[k]<<" "<<nums[l]<<endl;
+                   // cout<<i<<" "<<j<<" "<<k<<" "<<l<<endl;
+                    if(nums[i]+nums[j]+nums[k]+nums[l]==target)
+                    {
+                        ans.push_back({nums[i],nums[j],nums[k],nums[l]});
+                        
+                        while(k<nums.size()-1 && nums[k]==nums[k+1])
+                        k++;
+                        k++;
+                        while(l>k && nums[l]==nums[l-1])
+                        l--;
+                        l--;
+                    }
+                    else if(nums[i]+nums[j]+nums[k]+nums[l]<target)
+                    {
+                        k++;
+                    }
+                    else
+                    {
+                        l--;
+                    }
+                    //cout<<i<<" "<<j<<" "<<k<<" "<<l<<endl;
+                }
+                //cout<<j<<endl;
+                while(j<nums.size()-1 && nums[j]==nums[j+1])
+                        j++;
+                        j++;
+                //cout<<j<<endl;
+            }
+            while(i<nums.size()-1 && nums[i]==nums[i+1])
+                        i++;
+                        i++;
+        }
+        return ans;
+    }
+};
